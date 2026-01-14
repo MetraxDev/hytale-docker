@@ -8,7 +8,9 @@ version=$(./hytale-downloader-linux-amd64 -print-version)
 if [ ! -d "$version" ]
 then
     ./hytale-downloader-linux-amd64
-    unzip $version -d $version
+    unzip $version -d /data/$version
 fi
 
-java -jar "$version/Server/HytaleServer.jar" --assets "$version/Assets.zip"
+cd /data/$version
+
+java -jar "Server/HytaleServer.jar" --assets "Assets.zip"
